@@ -20,7 +20,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @Component
 public class SecurityFilter extends OncePerRequestFilter{
-	
+
 	@Autowired
 	private TokenService tokenService;
 	@Autowired
@@ -29,7 +29,7 @@ public class SecurityFilter extends OncePerRequestFilter{
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
-		
+
 		var token = this.recoverToken(request);
 		if(Objects.nonNull(token)) {
 			var login = tokenService.validateToken(token);

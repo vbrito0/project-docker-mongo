@@ -17,10 +17,10 @@ import com.teste.fast.security.model.Users;
 
 @Service
 public class TokenService {
-	
+
 	@Value("${api.security.token.secret}")
 	private String secret;
-	
+
 	public String generateToken(Users users) {
 		try {
 			Algorithm algorithm = Algorithm.HMAC256(secret);
@@ -34,7 +34,7 @@ public class TokenService {
 			throw new RuntimeException("Erro na geração do token", e);
 		}
 	}
-	
+
 	public String validateToken(String token) {
 		try {
 			Algorithm algorithm = Algorithm.HMAC256(secret);
@@ -47,7 +47,7 @@ public class TokenService {
 			return "";
 		}
 	}
-	
+
 	private Instant genExpirationDate() {
 		return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
 	}

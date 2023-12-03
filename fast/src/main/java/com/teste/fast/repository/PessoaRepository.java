@@ -7,5 +7,5 @@ import com.teste.fast.model.Pessoa;
 
 @Repository
 public interface PessoaRepository extends MongoRepository<Pessoa, String>{
-	
+
 }

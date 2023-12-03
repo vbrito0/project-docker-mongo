@@ -25,14 +25,14 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/auth")
 public class AutheticationContoller {
-	
+
 	@Autowired
 	private AuthenticationManager authenticationManager;
 	@Autowired
 	private UserRepository userRepository;
 	@Autowired
 	private TokenService tokenService;
-	
+
 	@PostMapping("/login")
 	public ResponseEntity<?> login(@RequestBody @Valid AuthenticationDTO authDTO){
 		var usernamePassword = new UsernamePasswordAuthenticationToken(authDTO.getLogin(), authDTO.getPassword());
@@ -40,7 +40,7 @@ public class AutheticationContoller {
 		var token = tokenService.generateToken((Users) auth.getPrincipal());
 		return ResponseEntity.ok(new LoginResponseDTO(token));
 	}
-	
+
 	@PostMapping("/register")
 	public ResponseEntity<?> register(@RequestBody @Valid RegisterDTO registerDTO){
 		if(Objects.nonNull(this.userRepository.findByLogin(registerDTO.getLogin()))) {

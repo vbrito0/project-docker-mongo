@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Document
 public class Pessoa {
-	
+
 	@Id
 	private String id;
 	private String nome;

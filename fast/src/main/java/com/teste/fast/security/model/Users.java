@@ -20,18 +20,18 @@ import lombok.NoArgsConstructor;
 @Document
 @EqualsAndHashCode(of = "idUser")
 public class Users implements UserDetails{
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private String idUser;
-	
+
 	private String login;
-	
+
 	private String password;
-	
+
 	private UserRole role;
-	
+
 	public Users(String login, String password, UserRole role) {
 		this.login = login;
 		this.password = password;

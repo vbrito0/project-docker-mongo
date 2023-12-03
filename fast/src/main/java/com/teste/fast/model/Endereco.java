@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Document
 public class Endereco {
-	
+
 	private String rua;
 	private String bairro;
 }

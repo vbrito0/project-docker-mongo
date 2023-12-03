@@ -19,22 +19,22 @@ import com.teste.fast.service.PessoaService;
 @RestController
 @RequestMapping("/pessoa")
 public class PessoaController {
-	
+
 	@Autowired
 	private PessoaService pessoaService;
-	
+
 	@PostMapping("/criar")
 	private ResponseEntity<Pessoa> criar(@RequestBody PessoaDTO pessoaDTO) {
 		Pessoa pessoa = pessoaService.criarPessoa(pessoaDTO);
 		return ResponseEntity.status(HttpStatus.CREATED).body(pessoa);
 	}
-	
+
 	@GetMapping
 	private ResponseEntity<List<Pessoa>> buscarList() {
 		List<Pessoa> buscarPessoas = pessoaService.buscarPessoas();
 		return ResponseEntity.status(HttpStatus.FOUND).body(buscarPessoas);
 	}
-	
+
 	@GetMapping("/{id}")
 	private ResponseEntity<Pessoa> buscar(@PathVariable String id) {
 		Pessoa buscarPessoa = pessoaService.buscarPorId(id);
